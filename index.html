@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home — Portfolio</title>
+    <title>devAyo — Portfolio</title>
     <link
       href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet" />
@@ -16,7 +16,7 @@
   <body>
     <header class="site-header">
       <nav class="nav">
-        <a class="brand" href="index.html">MyPortfolio</a>
+        <a class="brand" href="index.html">devAyo</a>
         <ul class="nav-links">
           <li><a href="about.html">About</a></li>
           <li><a href="projects.html">Projects</a></li>
@@ -27,23 +27,100 @@
 
     <main>
       <section class="hero">
-        <h1 class="hero-title">Welcome</h1>
-        <p class="hero-sub">
-          I'm a developer/designer — crafting delightful web experiences.
-        </p>
-        <p><a class="cta" href="about.html">Learn about me</a></p>
+        <div class="hero-layout">
+          <div class="hero-main">
+            <p class="hero-kicker">Frontend Developer · UI-focused</p>
+            <h1 class="hero-title">Hi, I'm Ayo.</h1>
+            <p class="hero-sub">
+              I design and build clean, modern websites and web apps that feel great to
+              use.
+            </p>
+            <div class="hero-actions">
+              <a class="cta" href="projects.html">View projects</a>
+              <a class="cta cta--ghost" href="contact.html">Contact me</a>
+            </div>
+            <div class="hero-meta">
+              <span>Available for freelance & full-time roles</span>
+              <span>Based in Nigeria</span>
+            </div>
+          </div>
+          <div class="hero-side">
+            <div class="hero-highlight-card">
+              <p class="hero-highlight-label">Recent work</p>
+              <p class="hero-highlight-title">
+                Landing pages, dashboards & portfolio sites
+              </p>
+              <p class="hero-highlight-text">
+                Focused on responsive layouts, smooth interactions, and accessible
+                experiences.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section class="intro">
-        <h2>Featured Project</h2>
+      <section class="section">
+        <div class="section-header">
+          <h2>Featured project</h2>
+          <p>A quick look at one of my recent builds.</p>
+        </div>
         <div class="card-grid">
-          <article class="card">
-            <h3>Project Title</h3>
+          <article class="card card--project-one">
+            <h3>Project One</h3>
             <p>
               Short description of a highlighted project. Replace this with your
               project details and links.
             </p>
-            <p><a href="#">View project</a></p>
+            <p>
+              <a
+                href="https://first-work-of-2026.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >View project</a
+              >
+            </p>
+          </article>
+          <article class="card">
+            <h3>Clean, responsive layouts</h3>
+            <p>
+              Every project is designed to look great on mobile, tablet, and desktop
+              with a focus on readability and clarity.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--skills">
+        <div class="section-header">
+          <h2>Skills & tools</h2>
+          <p>The stack I use to bring ideas to life.</p>
+        </div>
+        <div class="skills-grid">
+          <article class="card">
+            <h3>Frontend</h3>
+            <ul class="pill-list">
+              <li>HTML5</li>
+              <li>CSS3</li>
+              <li>JavaScript (ES6+)</li>
+              <li>Responsive layouts</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>UI & Experience</h3>
+            <ul class="pill-list">
+              <li>Design systems</li>
+              <li>Component libraries</li>
+              <li>Accessibility</li>
+              <li>Micro-interactions</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Workflow</h3>
+            <ul class="pill-list">
+              <li>Git & GitHub</li>
+              <li>GitHub Pages / Vercel</li>
+              <li>Performance-minded code</li>
+            </ul>
           </article>
         </div>
       </section>
@@ -51,6 +128,7 @@
 
     <footer class="site-footer">
       <p>© <span id="year"></span> MyPortfolio — Built with care.</p>
+      <p>Built by devAyo</p>
     </footer>
 
     <script

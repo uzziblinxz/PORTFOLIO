@@ -62,7 +62,22 @@ body {
   max-width: 1100px;
   margin: 40px auto;
   padding: 40px 20px;
-  text-align: center;
+}
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
+  gap: 32px;
+  align-items: center;
+}
+.hero-main {
+  text-align: left;
+}
+.hero-kicker {
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 8px;
 }
 .hero-title {
   font-family: "UnifrakturCook", cursive;
@@ -75,6 +90,12 @@ body {
   color: var(--muted);
   font-size: 18px;
 }
+.hero-actions {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
 .cta {
   display: inline-block;
   background: var(--accent);
@@ -83,11 +104,61 @@ body {
   border-radius: 8px;
   text-decoration: none;
 }
+.cta--ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid rgba(176, 137, 74, 0.4);
+}
+.hero-meta {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.hero-side {
+  display: flex;
+  justify-content: center;
+}
+.hero-highlight-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 20px 18px;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.14);
+  max-width: 340px;
+}
+.hero-highlight-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+.hero-highlight-title {
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+.hero-highlight-text {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
 
-.intro {
+.section {
   max-width: 1100px;
-  margin: 20px auto;
-  padding: 20px;
+  margin: 0 auto 32px;
+  padding: 0 20px;
+}
+.section-header {
+  margin-bottom: 16px;
+}
+.section-header h2 {
+  margin: 0 0 6px;
+}
+.section-header p {
+  margin: 0;
+  color: var(--muted);
 }
 .card-grid {
   display: grid;
@@ -99,6 +170,52 @@ body {
   padding: 18px;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06);
+}
+
+.card--project-one {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background-image: url("assets/project-one-bg.png");
+  background-size: cover;
+  background-position: center;
+}
+.card--project-one::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.22));
+}
+.card--project-one > * {
+  position: relative;
+  z-index: 1;
+}
+.card--project-one a {
+  color: #fff;
+  font-weight: 600;
+}
+.card--project-one a:hover {
+  opacity: 0.92;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+.pill-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pill-list li {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f3f0ea;
+  font-size: 13px;
 }
 
 .page {
@@ -163,6 +280,12 @@ body {
 @media (max-width: 720px) {
   .hero-title {
     font-size: 40px;
+  }
+  .hero-layout {
+    grid-template-columns: 1fr;
+  }
+  .hero-side {
+    margin-top: 24px;
   }
   .about-grid {
     grid-template-columns: 1fr;
