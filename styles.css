@@ -176,6 +176,7 @@ body {
   position: relative;
   overflow: hidden;
   color: #fff;
+  background-color: #444; /* fallback if image not available */
   background-image: url("assets/project-one-bg.png");
   background-size: cover;
   background-position: center;
@@ -196,6 +197,18 @@ body {
 }
 .card--project-one a:hover {
   opacity: 0.92;
+}
+
+/* project one specific tweaks */
+.card--project-one {
+  min-height: 240px; /* ensure card has some visible height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card--project-one p {
+  margin: 0;
 }
 
 .skills-grid {
