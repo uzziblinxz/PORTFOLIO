@@ -180,6 +180,27 @@ body {
   box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06);
 }
 
+/* about page */
+.about-hero {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 24px;
+  align-items: center;
+}
+.about-photo {
+  display: flex;
+  justify-content: center;
+}
+.about-img {
+  max-width: 100%;
+  border-radius: 12px;
+}
+
 .card--project-one {
   position: relative;
   overflow: hidden;
