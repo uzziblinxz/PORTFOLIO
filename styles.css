@@ -165,6 +165,14 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 18px;
 }
+
+/* when only one card is present, center it and constrain its width */
+.card-grid--single {
+  justify-content: center;
+}
+.card-grid--single .card {
+  max-width: 480px;
+}
 .card {
   background: var(--card);
   padding: 18px;
