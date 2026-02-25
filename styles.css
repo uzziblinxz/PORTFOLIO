@@ -109,6 +109,13 @@ body {
   color: var(--accent);
   border: 1px solid rgba(176, 137, 74, 0.4);
 }
+.cta--telegram {
+  background: #0088cc;
+  color: #fff;
+}
+.cta--telegram:hover {
+  background: #0077b5;
+}
 .hero-meta {
   margin-top: 16px;
   font-size: 14px;
@@ -192,13 +199,29 @@ body {
   gap: 24px;
   align-items: center;
 }
-.about-photo {
-  display: flex;
-  justify-content: center;
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 }
-.about-img {
-  max-width: 100%;
-  border-radius: 12px;
+
+.telegram-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0088cc;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+.telegram-link:hover {
+  background: #0077b5;
+  color: #fff;
 }
 
 .card--project-one {
@@ -270,14 +293,8 @@ body {
   font-size: 48px;
   color: var(--accent);
   margin: 0 0 18px;
-}
+}  
 
-.about-grid {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 20px;
-  align-items: start;
-}
 .photo-placeholder {
   width: 200px;
   height: 200px;
