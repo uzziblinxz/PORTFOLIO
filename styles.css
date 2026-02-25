@@ -177,7 +177,7 @@ body {
   overflow: hidden;
   color: #fff;
   background-color: #444; /* fallback if image not available */
-  background-image: url("assets/project-one-bg.png");
+  background-image: url("assets/project-one-bg.jpg");
   background-size: cover;
   background-position: center;
 }
