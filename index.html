@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="Ayo — Web developer & software engineer. MERN stack developer building responsive, accessible web apps." />
+      <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <title>devAyo — Portfolio</title>
     <link
       href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Poppins:wght@300;400;600&display=swap"
@@ -14,9 +16,13 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <nav class="nav">
         <a class="brand" href="index.html">devAyo</a>
+        <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="hamburger"></span>
+        </button>
         <ul class="nav-links">
           <li><a href="about.html">About</a></li>
           <li><a href="projects.html">Projects</a></li>
@@ -26,7 +32,7 @@
     </header>
 
     <main>
-      <section class="hero">
+      <section id="main" class="hero reveal">
         <div class="hero-layout">
           <div class="hero-main">
             <p class="hero-kicker">Frontend Developer · UI-focused</p>
@@ -61,7 +67,7 @@
         </div>
       </section>
 
-      <section class="section">
+      <section class="section reveal">
         <div class="section-header">
           <h2>Featured project</h2>
           <p>A quick look at one of my recent builds.</p>
@@ -83,7 +89,7 @@
         </div>
       </section>
 
-      <section class="section section--skills">
+      <section class="section section--skills reveal">
         <div class="section-header">
           <h2>Skills & tools</h2>
           <p>The stack I use to bring ideas to life.</p>
