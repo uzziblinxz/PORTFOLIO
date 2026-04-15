@@ -501,6 +501,30 @@ html {
   margin: 0;
 }
 
+.card-title {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.card-desc {
+  margin: 0 0 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.97rem;
+}
+
+.card a {
+  text-decoration: none;
+  color: var(--highlight);
+  font-weight: 700;
+}
+
+.card a:hover {
+  opacity: 0.88;
+}
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
