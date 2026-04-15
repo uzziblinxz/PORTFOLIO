@@ -198,8 +198,13 @@ html {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .surprise-message {
@@ -211,7 +216,7 @@ html {
   color: #11141f;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   z-index: 1000;
   display: none;
   text-align: center;
@@ -1035,4 +1040,75 @@ html {
   .site-footer p {
     margin: 4px 0;
   }
+}
+
+/* Review and Rating Styles */
+.review-section {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--card);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.review-section h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  font-size: 1.5em;
+  color: #ddd;
+  cursor: pointer;
+  margin: 0 2px;
+  transition: color 0.2s;
+}
+
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+  color: #ffd700;
+}
+
+.review-section textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-2);
+  color: var(--accent);
+  font-family: inherit;
+  resize: vertical;
+  margin-bottom: 0.5rem;
+}
+
+.review-section textarea::placeholder {
+  color: var(--muted);
+}
+
+.review-section button[type="submit"] {
+  background: var(--highlight);
+  color: var(--bg-1);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.review-section button[type="submit"]:hover {
+  background: #e6a800;
 }
