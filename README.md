@@ -35,9 +35,33 @@ Your site will be available at:
 https://YOUR_USERNAME.github.io/PORTFOLIO/
 ```
 
-## Contact
+## Rating and Review System
 
-Email: usmanoshinowo@gmail.com
+The portfolio now includes a rating and review feature for each project. Visitors can rate projects from 1-5 stars and leave comments. Reviews are sent directly to your WhatsApp using Twilio.
+
+### Setup WhatsApp Notifications
+
+1. **Sign up for Twilio**: Go to [twilio.com](https://www.twilio.com/) and create an account.
+
+2. **Get WhatsApp enabled**: In your Twilio Console, enable WhatsApp Sandbox or upgrade to use WhatsApp Business API.
+
+3. **Get your credentials**:
+   - Account SID
+   - Auth Token
+   - WhatsApp number (from Twilio)
+
+4. **Configure environment variables in Vercel**:
+   - Go to your Vercel dashboard for the portfolio project.
+   - Navigate to Settings > Environment Variables.
+   - Add:
+     - `TWILIO_ACCOUNT_SID`: Your Twilio Account SID
+     - `TWILIO_AUTH_TOKEN`: Your Twilio Auth Token
+   - In `api/submit-review.js`, replace `+YOUR_WHATSAPP_NUMBER` with your actual WhatsApp number (e.g., `+1234567890`).
+
+5. **Update the Twilio number in the code**:
+   - In `api/submit-review.js`, replace `'whatsapp:+14155238886'` with your Twilio WhatsApp number if using a different one.
+
+Once set up, when someone submits a review, you'll receive a WhatsApp message with the rating and comment.
 
 ## Notes
 
