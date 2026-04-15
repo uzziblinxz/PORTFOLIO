@@ -1,9 +1,10 @@
 :root {
-  --bg-1: #f7f3ee; /* cream */
-  --bg-2: #e6f2f1; /* pale teal */
-  --accent: #b0894a; /* warm gold */
-  --muted: #6b6b6b;
-  --card: #ffffff;
+  --bg-1: #001bff;
+  --bg-2: #00d9ff;
+  --accent: #ffffff;
+  --muted: #d7f7ff;
+  --card: rgba(10, 24, 78, 0.96);
+  --border: rgba(255, 255, 255, 0.18);
 }
 
 * {
@@ -19,9 +20,31 @@ body {
     Roboto,
     "Helvetica Neue",
     Arial;
-  background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
-  color: #222;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(0, 255, 255, 0.32),
+      transparent 28%
+    ),
+    linear-gradient(180deg, var(--bg-1), var(--bg-2));
+  color: #eef9ff;
   -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle at top right,
+    rgba(0, 255, 255, 0.14),
+    transparent 20%
+  );
+  pointer-events: none;
 }
 
 html {
@@ -96,7 +119,7 @@ html {
   gap: 16px;
 }
 .nav-links a {
-  color: #333;
+  color: #eef9ff;
   text-decoration: none;
   padding: 8px 12px;
   border-radius: 8px;
@@ -105,10 +128,12 @@ html {
   justify-content: center;
   min-height: 40px;
   min-width: 40px;
-  transition: background 0.3s ease;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 }
 .nav-links a:hover {
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .hero {
@@ -168,12 +193,12 @@ html {
   color: var(--accent);
   border: 1px solid rgba(176, 137, 74, 0.4);
 }
-.cta--telegram {
-  background: #0088cc;
-  color: #fff;
+.cta--whatsapp {
+  background: #25d366;
+  color: #042300;
 }
-.cta--telegram:hover {
-  background: #0077b5;
+.cta--whatsapp:hover {
+  background: #1ebe5d;
 }
 .hero-meta {
   margin-top: 16px;
@@ -182,6 +207,9 @@ html {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+.whatsapp-icon {
+  margin-right: 8px;
 }
 .hero-side {
   display: flex;
@@ -341,21 +369,21 @@ html {
   font-size: 15px;
 }
 
-.telegram-link {
+.whatsapp-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #0088cc;
-  color: #fff;
+  background: #25d366;
+  color: #042300;
   padding: 10px 16px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
   transition: background 0.3s ease;
 }
-.telegram-link:hover {
-  background: #0077b5;
-  color: #fff;
+.whatsapp-link:hover {
+  background: #1ebe5d;
+  color: #042300;
 }
 
 /* About page responsive adjustments */
@@ -413,42 +441,48 @@ html {
   }
 }
 
-.card--project-one {
+.card--project-one,
+.card--project-two {
   position: relative;
   overflow: hidden;
-  color: #fff;
-  background-color: #444; /* fallback if image not available */
-  background-image: url("assets/project-one-bg.jpg");
+  color: #eef9ff;
+  background-color: #0a1f7a;
   background-size: cover;
   background-position: center;
-}
-.card--project-one::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.22));
-}
-.card--project-one > * {
-  position: relative;
-  z-index: 1;
-}
-.card--project-one a {
-  color: #fff;
-  font-weight: 600;
-}
-.card--project-one a:hover {
-  opacity: 0.92;
-}
-
-/* project one specific tweaks */
-.card--project-one {
   min-height: 240px; /* ensure card has some visible height */
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-.card--project-one p {
+.card--project-one {
+  background-image: url("assets/project-one-bg.jpg");
+}
+.card--project-two {
+  background-image: url("assets/project-two-preview.svg");
+}
+.card--project-one::before,
+.card--project-two::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.15));
+}
+.card--project-one > *,
+.card--project-two > * {
+  position: relative;
+  z-index: 1;
+}
+.card--project-one a,
+.card--project-two a {
+  color: #ffffff;
+  font-weight: 600;
+}
+.card--project-one a:hover,
+.card--project-two a:hover {
+  opacity: 0.95;
+}
+.card--project-one p,
+.card--project-two p {
   margin: 0;
 }
 
@@ -833,7 +867,7 @@ html {
     font-size: 13px;
     line-height: 1.6;
   }
-  .telegram-link {
+  .whatsapp-link {
     display: block;
     text-align: center;
     width: 100%;
