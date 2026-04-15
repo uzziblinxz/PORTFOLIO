@@ -3,6 +3,42 @@ document.addEventListener("DOMContentLoaded", function () {
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
+  // Dark mode toggle
+  var themeToggle = document.querySelector('.theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function() {
+      document.body.classList.toggle('dark-mode');
+      var icon = themeToggle.querySelector('.theme-icon');
+      if (document.body.classList.contains('dark-mode')) {
+        icon.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        icon.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      }
+    });
+
+    // Load saved theme
+    var savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+      themeToggle.querySelector('.theme-icon').textContent = '☀️';
+    }
+  }
+
+  // Surprise message
+  window.showSurprise = function() {
+    var message = document.createElement('div');
+    message.className = 'surprise-message';
+    message.innerHTML = '<p>🎉 Surprise! You found the hidden message!</p><p>Keep exploring my portfolio! 🚀</p>';
+    document.body.appendChild(message);
+    message.style.display = 'block';
+    setTimeout(function() {
+      message.style.display = 'none';
+      document.body.removeChild(message);
+    }, 3000);
+  };
+
   // Animate skill bars when the skills section scrolls into view
   var skillChart = document.querySelector(".skill-chart");
   var fills = document.querySelectorAll(".skill-fill");

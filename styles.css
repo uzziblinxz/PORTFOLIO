@@ -9,6 +9,17 @@
   --surface: rgba(255, 255, 255, 0.08);
 }
 
+body.dark-mode {
+  --bg-1: #f9f2d7;
+  --bg-2: #e8e0c7;
+  --accent: #0b1125;
+  --muted: #5a4d3a;
+  --card: rgba(255, 255, 255, 0.95);
+  --border: rgba(11, 17, 37, 0.12);
+  --highlight: #d46b08;
+  --surface: rgba(0, 0, 0, 0.05);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -138,6 +149,21 @@ html {
   background: rgba(255, 255, 255, 0.18);
 }
 
+.theme-toggle {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.theme-icon {
+  font-size: 20px;
+}
+
 .hero {
   max-width: 1100px;
   margin: 40px auto;
@@ -164,6 +190,32 @@ html {
   font-size: 64px;
   margin: 0;
   color: var(--accent);
+  cursor: pointer;
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.surprise-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--highlight);
+  color: #11141f;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  z-index: 1000;
+  display: none;
+  text-align: center;
+  font-weight: 600;
 }
 .hero-sub {
   margin: 12px 0 20px;
@@ -593,12 +645,47 @@ html {
   color: var(--accent);
 }
 
-.site-footer {
-  text-align: center;
-  padding: 28px 12px;
-  color: var(--muted);
-  border-top: 1px solid rgba(255, 242, 215, 0.12);
-  margin-top: 40px;
+.testimonials {
+  background: var(--surface);
+  padding: 40px 0;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.testimonial {
+  background: var(--card);
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.testimonial p {
+  margin: 0 0 12px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.testimonial cite {
+  font-weight: 600;
+  color: var(--highlight);
+  display: block;
+  text-align: right;
+}
+
+.testimonial::before {
+  content: '"';
+  font-size: 48px;
+  color: var(--highlight);
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  opacity: 0.3;
 }
 
 /* Enhanced responsive design for better mobile, tablet, and desktop support */
