@@ -1,7 +1,1 @@
-{
-  "functions": {
-    "api/submit-review.js": {
-      "runtime": "nodejs18.x"
-    }
-  }
-}
+{}
