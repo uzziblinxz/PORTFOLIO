@@ -111,4 +111,62 @@ document.addEventListener("DOMContentLoaded", function () {
       revObs.observe(el);
     });
   }
+
+  // Handle review submission with friendly client-side feedback
+  var reviewForms = document.querySelectorAll(
+    'form[action="/api/submit-review"]',
+  );
+  reviewForms.forEach(function (form) {
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      var button = form.querySelector("button[type='submit']");
+      var messageNode = form.querySelector(".review-message");
+      if (!messageNode) {
+        messageNode = document.createElement("div");
+        messageNode.className = "review-message";
+        form.appendChild(messageNode);
+      }
+
+      messageNode.textContent = "Sending review...";
+      messageNode.style.color = "#ffd54f";
+      button.disabled = true;
+
+      var formData = new FormData(form);
+      var data = {};
+      formData.forEach(function (value, key) {
+        data[key] = value;
+      });
+
+      try {
+        var response = await fetch(form.action, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        var result = await response.json();
+        if (response.ok && result.success) {
+          form.reset();
+          messageNode.textContent =
+            "Thanks! Your review was submitted successfully.";
+          messageNode.style.color = "#7cffb2";
+        } else {
+          messageNode.textContent =
+            "Sorry, something went wrong. Please try again.";
+          messageNode.style.color = "#ff6b6b";
+          console.error("Review error:", result);
+        }
+      } catch (error) {
+        messageNode.textContent =
+          "Unable to submit review right now. Please try again later.";
+        messageNode.style.color = "#ff6b6b";
+        console.error("Review submission failed:", error);
+      } finally {
+        button.disabled = false;
+      }
+    });
+  });
 });
