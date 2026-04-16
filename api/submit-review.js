@@ -1,6 +1,6 @@
 const querystring = require("querystring");
 
-const dialogToken = process.env.WHATSAPP_360DIALOG_TOKEN;
+const watiToken = process.env.WATI_API_TOKEN;
 const recipientNumber = process.env.WHATSAPP_RECIPIENT_NUMBER;
 
 export default async function handler(req, res) {
@@ -12,30 +12,29 @@ export default async function handler(req, res) {
 
     const { project, rating, review } = body;
     if (!project || !rating || !review) {
-      return res.status(400).json({ error: "Missing project, rating, or review" });
+      return res
+        .status(400)
+        .json({ error: "Missing project, rating, or review" });
     }
 
     const message = `New review for ${project}: Rating ${rating} stars\nReview: ${review}`;
 
     try {
-      const response = await fetch("https://waba.360dialog.io/v1/messages", {
+      const response = await fetch("https://app.wati.io/api/v1/sendMessage", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${dialogToken}`,
+          Authorization: `Bearer ${watiToken}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          to: `whatsapp:${recipientNumber}`,
-          type: "text",
-          text: {
-            body: message,
-          },
+          phone: recipientNumber,
+          message: message,
         }),
       });
 
       if (!response.ok) {
         const errorText = await response.text();
-        console.error("360dialog error:", response.status, errorText);
+        console.error("WATI error:", response.status, errorText);
         return res.status(500).json({ error: "Failed to send message" });
       }
 
