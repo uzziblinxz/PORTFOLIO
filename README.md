@@ -37,31 +37,28 @@ https://YOUR_USERNAME.github.io/PORTFOLIO/
 
 ## Rating and Review System
 
-The portfolio now includes a rating and review feature for each project. Visitors can rate projects from 1-5 stars and leave comments. Reviews are sent directly to your WhatsApp using Twilio.
+The portfolio now includes a rating and review feature for each project. Visitors can rate projects from 1-5 stars and leave comments. Reviews are sent to your WhatsApp using 360dialog.
 
-### Setup WhatsApp Notifications
+### Setup WhatsApp Notifications with 360dialog
 
-1. **Sign up for Twilio**: Go to [twilio.com](https://www.twilio.com/) and create an account.
+1. **Sign up for 360dialog**: Go to [360dialog.com](https://www.360dialog.com/) and create an account.
 
-2. **Get WhatsApp enabled**: In your Twilio Console, enable WhatsApp Sandbox or upgrade to use WhatsApp Business API.
+2. **Connect your WhatsApp Business number**: Follow 360dialog onboarding to link your WhatsApp number.
 
-3. **Get your credentials**:
-   - Account SID
-   - Auth Token
-   - WhatsApp number (from Twilio)
+3. **Get your API token**:
+   - In the 360dialog dashboard, copy the API token for the WhatsApp Business API.
 
 4. **Configure environment variables in Vercel**:
    - Go to your Vercel dashboard for the portfolio project.
    - Navigate to Settings > Environment Variables.
    - Add:
-     - `TWILIO_ACCOUNT_SID`: Your Twilio Account SID
-     - `TWILIO_AUTH_TOKEN`: Your Twilio Auth Token
-   - In `api/submit-review.js`, replace `+YOUR_WHATSAPP_NUMBER` with your actual WhatsApp number (e.g., `+1234567890`).
+     - `WHATSAPP_360DIALOG_TOKEN`: Your 360dialog API token
+     - `WHATSAPP_RECIPIENT_NUMBER`: Your personal WhatsApp number, e.g. `+1234567890`
 
-5. **Update the Twilio number in the code**:
-   - In `api/submit-review.js`, replace `'whatsapp:+14155238886'` with your Twilio WhatsApp number if using a different one.
+5. **Deploy**:
+   - The function in `api/submit-review.js` will use 360dialog to send each review as a WhatsApp message.
 
-Once set up, when someone submits a review, you'll receive a WhatsApp message with the rating and comment.
+Once set up, review submissions from the Projects page will be forwarded directly to your WhatsApp number.
 
 ## Notes
 

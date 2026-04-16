@@ -1,24 +1,45 @@
-const twilio = require("twilio");
 const querystring = require("querystring");
 
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-const client = twilio(accountSid, authToken);
+const dialogToken = process.env.WHATSAPP_360DIALOG_TOKEN;
+const recipientNumber = process.env.WHATSAPP_RECIPIENT_NUMBER;
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
-    const body = querystring.parse(req.body || "");
+    let body = req.body || "";
+    if (typeof body === "string") {
+      body = querystring.parse(body);
+    }
+
     const { project, rating, review } = body;
+    if (!project || !rating || !review) {
+      return res.status(400).json({ error: "Missing project, rating, or review" });
+    }
 
     const message = `New review for ${project}: Rating ${rating} stars\nReview: ${review}`;
 
     try {
-      await client.messages.create({
-        body: message,
-        from: "whatsapp:+14155238886", // Twilio sandbox WhatsApp number - replace with your Twilio number
-        to: "whatsapp:+YOUR_WHATSAPP_NUMBER", // Replace with your WhatsApp number
+      const response = await fetch("https://waba.360dialog.io/v1/messages", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${dialogToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          to: `whatsapp:${recipientNumber}`,
+          type: "text",
+          text: {
+            body: message,
+          },
+        }),
       });
-      res.status(200).json({ success: true });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("360dialog error:", response.status, errorText);
+        return res.status(500).json({ error: "Failed to send message" });
+      }
+
+      return res.status(200).json({ success: true });
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Failed to send message" });
